@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Login() {
   return (
-    <main className="m-auto justify-center items-center flex flex-1 flex-col">
+    <main className="m-auto justify-center items-center flex flex-1 flex-col mx-4">
       <div className="space-y-[40px]">
         <div>
           <Image src={MedictionLogo} alt="Logo Mediction" className="mb-8 mx-auto" />
