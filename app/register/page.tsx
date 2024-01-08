@@ -5,9 +5,18 @@ import Button from "../_atoms/button";
 import MedictionLogo from "../../public/Mediction.png";
 import Image from "next/image";
 
+const StepButton = () => {
+  return (
+    <div className="inline-flex space-x-4">
+      <Button disable title="Sebelumnya" />
+      <Button title="Selanjutnya" />
+    </div>
+  );
+};
+
 export default function Register() {
   return (
-    <main className="m-auto justify-center items-center flex flex-1 flex-col mx-4">
+    <main className="m-auto justify-center items-center py-10 flex flex-1 flex-col mx-4">
       <div className="space-y-[40px]">
         <div>
           <Image
@@ -26,6 +35,7 @@ export default function Register() {
             Daftarkan akun rumah sakit dan admin kamu untuk mengakses
           </p>
         </div>
+        {/* Progres barnya belom */}
         <div className="space-y-6">
           <InputForm
             name="hospital_id"
@@ -35,36 +45,34 @@ export default function Register() {
             type="text"
           />
           <InputForm
+            name="email"
+            placeholder="Tulis email rumah sakit"
+            required
+            title="Email Rumah Sakit"
+            type="text"
+          />
+          <InputForm
             name="password"
             placeholder="Tulis kata sandi anda"
             required
             title="Kata Sandi"
             type="password"
           />
-          <div className="justify-between flex flex-row items-center">
-            <div className="inline-flex space-x-2">
-              <input
-                type="checkbox"
-                className="border border-[#94A3B8] rounded-md"
-              />
-              <p className={`${inter.className} text-[#18181B] font-normal`}>
-                Ingat saya
-              </p>
-            </div>
-            <p
-              className={`text-[#3C8FE5] ${dm.className} font-medium text-right`}
-            >
-              Forgot password?
+          <InputForm
+            name="password_confirmation"
+            placeholder="Tulis ulang kata sandi anda"
+            required
+            title="Ulangi Kata sandi"
+            type="password"
+          />
+        </div>
+        <div className="flex flex-col justify-center">
+          <StepButton />
+          <div className="inline-flex justify-center items-center mt-4">
+            <p className={`${dm.className} font-normal text-[#64748B]`}>
+              Sudah punya akun?
             </p>
-          </div>
-          <div className="flex flex-col justify-center">
-            <Button title="Masuk" />
-            <div className="inline-flex justify-center items-center mt-4">
-              <p className={`${dm.className} font-normal text-[#64748B]`}>
-                Belum punya akun?
-              </p>
-              <p className={`text-[#3C8FE5] font-bold ml-1`}>Daftar</p>
-            </div>
+            <p className={`text-[#3C8FE5] font-bold ml-1`}>Masuk</p>
           </div>
         </div>
       </div>
