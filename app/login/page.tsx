@@ -55,12 +55,12 @@ export default function Login() {
           </div>
           <div className="flex flex-col justify-center">
             <Button title="Masuk" />
-            <p
-              className={`${dm.className} font-normal text-[#64748B] inline-flex mt-4 justify-center`}
-            >
-              Belum punya akun?
+            <div className="inline-flex justify-center items-center mt-4">
+              <p className={`${dm.className} font-normal text-[#64748B]`}>
+                Belum punya akun?
+              </p>
               <p className={`text-[#3C8FE5] font-bold ml-1`}>Daftar</p>
-            </p>
+            </div>
           </div>
         </div>
       </div>
