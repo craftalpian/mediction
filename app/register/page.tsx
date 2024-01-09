@@ -1,5 +1,5 @@
 import React from "react";
-import { dm, inter } from "../_utils/fonts";
+import { dm, inter, jakarta } from "../_utils/fonts";
 import InputForm from "../_components/input-form";
 import Button from "../_atoms/button";
 import MedictionLogo from "../../public/Mediction.png";
@@ -37,6 +37,9 @@ export default function Register() {
         </div>
         {/* Progres barnya belom */}
         <div className="space-y-6">
+          <h1 className={`text-slate-900 text-lg font-bold leading-relaxed ${jakarta.className}`}>
+            Akun Rumah Sakit
+          </h1>
           <InputForm
             name="hospital_id"
             placeholder="Tulis ID rumah sakit yang diberikan, #HGY65"
