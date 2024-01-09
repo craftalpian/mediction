@@ -17,6 +17,18 @@ export default function HospitalInfo() {
         title="Nama Rumah Sakit"
         type="text"
       />
+      <div className="flex flex-col space-y-2">
+        <Title required={false} title="Alamat" />
+        <div className="w-full flex flex-col">
+          <select className="select select-bordered w-full placeholder:text-[#afb1b2] text-[#353738] bg-gray-50 ${inter.className} placeholder:${inter.className} text-sm font-normal border border-[#D8DCDF]">
+            <option disabled selected>
+              Who shot first?
+            </option>
+            <option>Han Solo</option>
+            <option>Greedo</option>
+          </select>
+        </div>
+      </div>
       <InputForm
         name="phone_number"
         placeholder="Cth : +6217364xxxx"
@@ -29,7 +41,8 @@ export default function HospitalInfo() {
         <div className="w-full flex flex-col">
           <textarea
             placeholder="Cth : Jl. Margaasih no.35 Kecamatan Bojongsoang, Kab. Bandung"
-            className={`p-[14px] placeholder:text-[#717375] bg-gray-50 ${inter.className} placeholder:${inter.className} text-sm font-normal outline-none border border-[#D8DCDF] rounded-md`}
+            className={`p-[14px] placeholder:text-[#afb1b2] text-[#353738] bg-gray-50 ${inter.className} placeholder:${inter.className} text-sm font-normal outline-none border border-[#D8DCDF] rounded-md`}
+            rows={3}
           ></textarea>
           <p
             className={`text-neutral-500 text-xs font-normal ${dm.className} mt-2 leading-tight text-right`}

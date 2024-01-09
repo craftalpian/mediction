@@ -18,7 +18,7 @@ export default function Input({
     <input
       type={type}
       placeholder={placeholder}
-      className={`p-[14px] placeholder:text-[#717375] bg-gray-50 ${inter.className} placeholder:${inter.className} text-sm font-normal outline-none border border-[#D8DCDF] rounded-md`}
+      className={`p-[14px] placeholder:text-[#afb1b2] text-[#353738] bg-gray-50 ${inter.className} placeholder:${inter.className} text-sm font-normal outline-none border border-[#D8DCDF] rounded-md`}
     />
   );
 }

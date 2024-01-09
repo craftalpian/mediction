@@ -10,7 +10,7 @@ import HospitalInfo from "./_components/hospital-info";
 const StepButton = () => {
   return (
     <div className="inline-flex space-x-4">
-      <Button disable title="Sebelumnya" />
+      <Button stroke title="Sebelumnya" />
       <Button title="Selanjutnya" />
     </div>
   );
