@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
 import React from "react";
 import Image from "next/image";
 import { dm, inter, jakarta } from "@/app/_utils/fonts";
-import Empty from "../../../public/empty.svg";
 import { SiAddthis } from "react-icons/si";
 import AddNewPatient from "./_components/add-new-patient";
+import ListPatient from "./_components/list-patient";
+import EmptyPatient from "./_components/empty-patient";
 
 export default function Login() {
   return (
@@ -31,19 +32,8 @@ export default function Login() {
             </h1>
           </button>
         </div>
-        <div className="mt-[20px] bg-white flex flex-1 w-full flex-col justify-center">
-          <Image src={Empty} alt="" className="self-center" />
-          <h1
-            className={`text-center mt-[16px] text-neutral-950 text-xl font-bold ${jakarta.className} leading-loose`}
-          >
-            Belum ada pasien yang ditambahkan!
-          </h1>
-          <p
-            className={`text-center text-neutral-500 text-sm font-normal ${dm.className} leading-snug mt-2`}
-          >
-            Tambahkan data pasien untuk penyimpanan data dan history berobat!
-            Klik button “Tambah Pasien” di atas kanan halaman ini
-          </p>
+        <div className="mt-[20px] bg-white flex flex-1 w-full flex-col">
+          {true ? <ListPatient /> : <EmptyPatient />}
         </div>
       </main>
       <dialog id="my_modal_2" className="modal">
