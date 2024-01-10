@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row flex-1 bg-[#F7FBFE]">
+    <div className="flex flex-row flex-1 bg-slate-50">
       <div className="pt-[32px] bg-white max-w-[224px] flex flex-col justify-between">
         <div>
           <Image
