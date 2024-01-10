@@ -5,6 +5,7 @@ import TodayPatient from "../../../public/today-patient.svg";
 import MedicalReport from "../../../public/medical-report.svg";
 import TotalPatient from "../../../public/total-patient.svg";
 import TotalDoctor from "../../../public/total-doctor.svg";
+import Empty from "../../../public/empty.svg";
 
 const Cardboard = ({
   image,
@@ -63,7 +64,19 @@ export default function Login() {
         <Cardboard image={TotalPatient} title="Total Pasien" value={456} />
         <Cardboard image={TotalDoctor} title="Jumlah Dokter" value={456} />
       </div>
-      <div className="mt-[20px] bg-white flex flex-1 w-full"></div>
+      <div className="mt-[20px] bg-white flex flex-1 w-full flex-col justify-center">
+        <Image src={Empty} alt="" className="self-center" />
+        <h1
+          className={`text-center mt-[16px] text-neutral-950 text-xl font-bold ${jakarta.className} leading-loose`}
+        >
+          Belum ada data yang bisa ditampilkan!
+        </h1>
+        <p
+          className={`text-center text-neutral-500 text-sm font-normal ${dm.className} leading-snug mt-2`}
+        >
+          Tambahkan data pasien dan riwayat pemeriksaan pasien pada menu Pasien
+        </p>
+      </div>
     </main>
   );
 }
