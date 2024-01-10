@@ -6,12 +6,14 @@ export interface ButtonInterface {
   title: string;
   disable?: boolean;
   stroke?: boolean;
+  className?: string;
 }
 
 export default function Button({
   title,
   disable = false,
   stroke = false,
+  className,
 }: ButtonInterface) {
   return (
     <button
@@ -22,7 +24,8 @@ export default function Button({
           "bg-gray-100 text-stone-300": disable,
           "border border-sky-800 bg-white text-sky-800": stroke,
           "text-white": !stroke,
-        }
+        },
+        className
       )}
     >
       {title}
