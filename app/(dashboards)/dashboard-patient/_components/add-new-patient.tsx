@@ -3,6 +3,8 @@ import InputForm from "@/app/_components/input-form";
 import { inter, jakarta } from "@/app/_utils/fonts";
 import React from "react";
 import { IoMdClose } from "react-icons/io";
+import AddPatient from "../../../../public/add-patient.svg";
+import Image from "next/image";
 
 export default function AddNewPatient() {
   return (
@@ -16,6 +18,7 @@ export default function AddNewPatient() {
           </form>
         </div>
         <div className="items-center">
+          <Image src={AddPatient} alt="" className="self-center mx-auto" />
           <h1
             className={`text-slate-900 text-2xl font-bold ${jakarta.className} leading-loose`}
           >
