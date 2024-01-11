@@ -48,8 +48,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row flex-1 bg-slate-50">
-      <div className="pt-[32px] bg-white max-w-[224px] flex flex-col justify-between">
+    <div className="flex flex-row flex-1 bg-slate-50 relative">
+      <div className="pt-[32px] bg-white max-w-[224px] flex flex-col justify-between sticky left-0 h-screen">
         <div>
           <Image
             src={MedictionLogo}
@@ -85,6 +85,7 @@ export default function RootLayout({
           </p>
         </div>
       </div>
+      {/* <div className="flex flex-1">{children}</div> */}
       {children}
     </div>
   );
