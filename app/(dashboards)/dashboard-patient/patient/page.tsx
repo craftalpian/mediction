@@ -5,6 +5,7 @@ import Image from "next/image";
 import { dm, inter, jakarta } from "@/app/_utils/fonts";
 import { SiAddthis } from "react-icons/si";
 import { MdRemoveRedEye } from "react-icons/md";
+import CheckDetail from "./_components/check-detail";
 
 const PatientItemDetail = ({
   title,
@@ -169,8 +170,8 @@ export default function Patient() {
               </button>
             </div>
             <div className="grid grid-flow-row pt-6">
-              <div className="grid grid-flow-col space-x-4">
-                <div className="items-center flex flex-1 flex-col -mb-4">
+              <div className="inline-flex space-x-4">
+                <div className="items-center flex flex-col -mb-4">
                   <div className="w-4 h-4 bg-white rounded-full border-4 border-sky-900 my-1"></div>
                   <div className="h-full border-r border-dashed" />
                 </div>
@@ -244,97 +245,8 @@ export default function Patient() {
                           check-up-result.pdf
                         </p>
                       </div>
-                      <div className="grid col-span-1">
-                        <button className="px-6 py-3 text-sky-800 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex">
-                          <MdRemoveRedEye />
-                          <p
-                            className={`text-xs font-bold ${inter.className} leading-tight`}
-                          >
-                            Lihat Hasil
-                          </p>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-flow-col space-x-4 mt-4">
-                <div className="items-center flex flex-1 flex-col -mb-4">
-                  <div className="w-4 h-4 bg-white rounded-full border-4 border-sky-900 my-1"></div>
-                  <div className="h-full border-r border-dashed" />
-                </div>
-                <div className="flex flex-1 flex-col w-full space-y-3">
-                  <h1
-                    className={`text-slate-900 text-sm font-normal ${dm.className} leading-normal`}
-                  >
-                    23 September 2023
-                  </h1>
-                  <div className="bg-neutral-50 w-full flex flex-col flex-1 p-4 rounded-xl">
-                    <div className="space-y-1 border-b pb-4 w-full">
-                      <h1
-                        className={`text-slate-900 text-sm font-bold ${jakarta.className} leading-loose`}
-                      >
-                        Pemeriksaan Diabetes
-                      </h1>
-                      <p
-                        className={`text-zinc-400 text-xs font-normal ${dm.className} leading-relaxed max-w-xl`}
-                      >
-                        Blood sugar management is especially important for
-                        people with diabtes, as chronically high blood sugar
-                        levels can lead
-                      </p>
-                    </div>
-                    <div className="mt-4 grid grid-cols-6">
-                      <div className="grid col-span-1 space-y-1">
-                        <h2
-                          className={`text-slate-500 text-xs font-normal ${dm.className} leading-normal`}
-                        >
-                          Tindakan
-                        </h2>
-                        <p
-                          className={`text-slate-900 text-sm font-medium ${dm.className} leading-normal`}
-                        >
-                          Check-Up
-                        </p>
-                      </div>
-                      <div className="grid col-span-1 space-y-1">
-                        <h2
-                          className={`text-slate-500 text-xs font-normal ${dm.className} leading-normal`}
-                        >
-                          Durasi
-                        </h2>
-                        <p
-                          className={`text-slate-900 text-sm font-medium ${dm.className} leading-normal`}
-                        >
-                          3 bulan
-                        </p>
-                      </div>
-                      <div className="grid col-span-1 space-y-1">
-                        <h2
-                          className={`text-slate-500 text-xs font-normal ${dm.className} leading-normal`}
-                        >
-                          Tindak Lanjut
-                        </h2>
-                        <p
-                          className={`text-slate-900 text-sm font-medium ${dm.className} leading-normal`}
-                        >
-                          -
-                        </p>
-                      </div>
-                      <div className="grid col-span-2 space-y-1">
-                        <h2
-                          className={`text-slate-500 text-xs font-normal ${dm.className} leading-normal`}
-                        >
-                          Dokumen Pendukung
-                        </h2>
-                        <p
-                          className={`text-sky-700 text-sm font-medium ${dm.className} leading-normal`}
-                        >
-                          check-up-result.pdf
-                        </p>
-                      </div>
-                      <div className="grid col-span-1">
-                        <button className="px-6 py-3 text-sky-800 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex">
+                      <div className="col-span-1">
+                        <button className="px-4 py-3 text-sky-800 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex">
                           <MdRemoveRedEye />
                           <p
                             className={`text-xs font-bold ${inter.className} leading-tight`}
@@ -351,8 +263,8 @@ export default function Patient() {
           </div>
         </div>
       </main>
-      <dialog id="my_modal_2" className="modal">
-        {/* <AddNewPatient /> */}
+      <dialog id="my_modal_detail" className="modal">
+        <CheckDetail />
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
         </form>
