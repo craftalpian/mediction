@@ -246,7 +246,16 @@ export default function Patient() {
                         </p>
                       </div>
                       <div className="col-span-1">
-                        <button className="px-4 py-3 text-sky-800 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex">
+                        <button
+                          onClick={() => {
+                            if (document) {
+                              (
+                                document.getElementById("my_modal_detail") as any
+                              ).showModal();
+                            }
+                          }}
+                          className="px-4 py-3 text-sky-800 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex"
+                        >
                           <MdRemoveRedEye />
                           <p
                             className={`text-xs font-bold ${inter.className} leading-tight`}

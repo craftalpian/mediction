@@ -4,13 +4,29 @@ import { inter, jakarta } from "@/app/_utils/fonts";
 import React from "react";
 import { IoMdClose } from "react-icons/io";
 import AddPatient from "../../../../../public/add-patient.svg";
+import DetailModal from "../../../../../public/medical-file.svg";
 import Image from "next/image";
 
 export default function CheckDetail() {
   return (
-    <div className="modal-box bg-white px-6">
+    <div className="modal-box bg-white px-6 w-11/12 max-w-5xl">
       <div className="flex flex-col justify-center items-center">
-        <div className="flex w-full justify-end">
+        <div className="w-full justify-between items-center inline-flex">
+          <div className="space-x-[18px] inline-flex items-center">
+            <Image src={DetailModal} alt="" />
+            <p>
+              <span
+                className={`text-slate-900 text-xl font-extrabold ${jakarta.className} leading-7`}
+              >
+                Detail Pemeriksaan{" "}
+              </span>
+              <span
+                className={`text-slate-900 text-xl font-medium ${jakarta.className} leading-7`}
+              >
+                [23 September 2023]
+              </span>
+            </p>
+          </div>
           <form method="dialog">
             <button className="text-4xl">
               <IoMdClose />
