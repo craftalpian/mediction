@@ -11,7 +11,7 @@ export default function CheckDetail() {
   return (
     <div className="modal-box bg-white px-6 w-11/12 max-w-5xl">
       <div className="flex flex-col justify-center items-center">
-        <div className="w-full justify-between items-center inline-flex">
+        <div className="w-full justify-between items-center inline-flex border-b border-b-slate-200 pb-[26px]">
           <div className="space-x-[18px] inline-flex items-center">
             <Image src={DetailModal} alt="" />
             <p>
@@ -32,6 +32,23 @@ export default function CheckDetail() {
               <IoMdClose />
             </button>
           </form>
+        </div>
+        <div className="grid grid-cols-2">
+          <div className="col-span-1 space-y-3">
+            <p className="text-slate-400 text-sm font-medium font-['Plus Jakarta Sans'] leading-tight">
+              Pasien
+            </p>
+            <div className="inline-flex">
+              <div className="flex flex-col">
+                <h1 className="text-slate-900 text-lg font-medium font-['DM Sans'] leading-loose">
+                  Nadia Omara
+                </h1>
+                <h3 className="text-blue-500 text-xs font-semibold font-['Plus Jakarta Sans'] leading-normal">
+                  #674HY
+                </h3>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="items-center">
           <Image src={AddPatient} alt="" className="self-center mx-auto" />
