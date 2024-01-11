@@ -59,11 +59,45 @@ export default function Patient() {
         <div className="mt-[20px] flex flex-1 w-full flex-row space-x-4">
           <div className="space-y-4">
             <div className="bg-sky-700 bg-opacity-95 rounded-xl border-2 border-white py-6 px-4 w-64">
-              <h1
-                className={`text-center text-white text-xl font-bold ${dm.className} leading-loose`}
-              >
-                Nadia Omara
-              </h1>
+              <>
+                <h1
+                  className={`text-center text-white text-xl font-bold ${dm.className} leading-loose`}
+                >
+                  Nadia Omara
+                </h1>
+                <p
+                  className={`text-center text-slate-100 text-xs font-semibold ${jakarta.className} leading-normal`}
+                >
+                  #674HY
+                </p>
+              </>
+              <div className="mt-5 inline-flex justify-between w-full">
+                <div className="w-full">
+                  <h2
+                    className={`text-center text-white text-xl font-bold ${dm.className} leading-normal`}
+                  >
+                    15
+                  </h2>
+                  <p
+                    className={`text-center text-slate-300 text-xs font-normal ${dm.className} leading-normal`}
+                  >
+                    Total berobat
+                  </p>
+                </div>
+                <div className="border-r border-slate-100 border-opacity-10" />
+                <div className="w-full">
+                  <h2
+                    className={`text-center text-white text-xl font-bold ${dm.className} leading-normal`}
+                  >
+                    1
+                  </h2>
+                  <p
+                    className={`text-center text-slate-300 text-xs font-normal ${dm.className} leading-normal`}
+                  >
+                    Rujukan
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="px-4 py-6 w-64 bg-white space-y-4">
               <h1
