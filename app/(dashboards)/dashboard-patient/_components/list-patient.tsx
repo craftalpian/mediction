@@ -14,7 +14,7 @@ export default function ListPatient() {
             <th></th>
             <th>ID Pasien</th>
             <th>Jenis Kelamin</th>
-            <th className="min-w-10">Tanggal Lahir</th>
+            <th>Tanggal Lahir</th>
             <th>Nomor Telepon</th>
             <th>Alamat</th>
             <th>Fasilitas Kesehatan</th>
