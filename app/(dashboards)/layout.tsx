@@ -66,13 +66,13 @@ export default function RootLayout({
           />
           <div className="my-[32px] border-b" />
           <Menu
-            active={path === "/dashboard-home"}
+            active={path.includes("/dashboard-home")}
             icon={<BiSolidCategoryAlt />}
             title="Dashboard"
             target="/dashboard-home"
           />
           <Menu
-            active={path === "/dashboard-patient"}
+            active={path.includes("/dashboard-patient")}
             icon={<HiUsers />}
             title="Pasien"
             target="/dashboard-patient"
