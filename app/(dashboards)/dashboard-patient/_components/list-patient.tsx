@@ -3,7 +3,7 @@ import React from "react";
 import { MdCalendarMonth } from "react-icons/md";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 
-export default function ListPatient() {
+export default function ListPatient({ onClick }: { onClick?: () => void }) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-auto">
@@ -51,7 +51,7 @@ export default function ListPatient() {
             <td>
               <div className="inline-flex space-x-3 text-[#A9B4CD] text-base items-center">
                 <h1 className="text-lg">
-                <MdCalendarMonth />
+                  <MdCalendarMonth />
                 </h1>
                 <p
                   className={`text-slate-900 text-sm font-normal ${dm.className} leading-snug`}
@@ -90,7 +90,10 @@ export default function ListPatient() {
             </td>
             <td>
               <div className="inline-flex gap-x-4">
-                <button className="p-3 bg-sky-900 rounded-lg justify-center items-center gap-2 inline-flex">
+                <button
+                  className="p-3 bg-sky-900 rounded-lg justify-center items-center gap-2 inline-flex"
+                  onClick={onClick}
+                >
                   <p
                     className={`text-white text-xs font-bold ${dm.className} leading-tight`}
                   >

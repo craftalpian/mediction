@@ -7,8 +7,10 @@ import { SiAddthis } from "react-icons/si";
 import AddNewPatient from "./_components/add-new-patient";
 import ListPatient from "./_components/list-patient";
 import EmptyPatient from "./_components/empty-patient";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPatient() {
+  const { push } = useRouter();
   return (
     <>
       <main className="flex flex-1 flex-col p-8 bg-slate-50">
@@ -21,7 +23,9 @@ export default function DashboardPatient() {
           <button
             onClick={() => {
               if (document) {
-                (document.getElementById("my_modal_2") as any).showModal();
+                (
+                  document.getElementById("my_modal_add_new_patient") as any
+                ).showModal();
               }
             }}
             className="text-white items-center bg-sky-900 py-[14px] px-[28px] rounded-lg inline-flex space-x-2"
@@ -33,10 +37,14 @@ export default function DashboardPatient() {
           </button>
         </div>
         <div className="mt-[20px] bg-white flex flex-1 w-full flex-col">
-          {true ? <ListPatient /> : <EmptyPatient />}
+          {true ? (
+            <ListPatient onClick={() => push("/dashboard-patient/patient")} />
+          ) : (
+            <EmptyPatient />
+          )}
         </div>
       </main>
-      <dialog id="my_modal_2" className="modal">
+      <dialog id="my_modal_add_new_patient" className="modal">
         <AddNewPatient />
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
