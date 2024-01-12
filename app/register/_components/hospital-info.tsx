@@ -18,7 +18,7 @@ export default function HospitalInfo() {
         type="text"
       />
       <div className="flex flex-col space-y-2">
-        <Title required={false} title="Alamat" />
+        <Title required={false} title="Kategori Rumah Sakit" />
         <div className="w-full flex flex-col">
           <select className="select select-bordered w-full placeholder:text-[#afb1b2] text-[#353738] bg-gray-50 ${inter.className} placeholder:${inter.className} text-sm font-normal border border-[#D8DCDF]">
             <option disabled selected>

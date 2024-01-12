@@ -6,6 +6,7 @@ import { dm, inter, jakarta } from "@/app/_utils/fonts";
 import { SiAddthis } from "react-icons/si";
 import { MdRemoveRedEye } from "react-icons/md";
 import CheckDetail from "./_components/check-detail";
+import RecordMain from "./_components/record-main";
 
 const PatientItemDetail = ({
   title,
@@ -156,7 +157,9 @@ export default function Patient() {
               <button
                 onClick={() => {
                   if (document) {
-                    (document.getElementById("my_modal_2") as any).showModal();
+                    (
+                      document.getElementById("my_modal_check") as any
+                    ).showModal();
                   }
                 }}
                 className="text-white items-center bg-sky-900 py-[14px] px-[28px] rounded-lg inline-flex space-x-2"
@@ -165,7 +168,7 @@ export default function Patient() {
                 <h1
                   className={`text-sm font-bold ${inter.className} leading-snug`}
                 >
-                  Tambah Pasien
+                  Catat Pemeriksaan
                 </h1>
               </button>
             </div>
@@ -274,6 +277,12 @@ export default function Patient() {
       </main>
       <dialog id="my_modal_detail" className="modal">
         <CheckDetail />
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+      <dialog id="my_modal_check" className="modal">
+        <RecordMain />
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
         </form>
