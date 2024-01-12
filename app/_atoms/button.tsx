@@ -7,6 +7,7 @@ export interface ButtonInterface {
   disable?: boolean;
   stroke?: boolean;
   className?: string;
+  onClick?: () => void;
 }
 
 export default function Button({
@@ -14,10 +15,12 @@ export default function Button({
   disable = false,
   stroke = false,
   className,
+  onClick,
 }: ButtonInterface) {
   return (
     <button
       disabled={disable}
+      onClick={onClick}
       className={clsx(
         `w-full rounded-lg justify-center items-center py-3 ${inter.className} font-bold text-base bg-[#003778]`,
         {

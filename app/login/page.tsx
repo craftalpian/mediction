@@ -59,7 +59,7 @@ export default function Login() {
               <p className={`${dm.className} font-normal text-[#64748B]`}>
                 Belum punya akun?
               </p>
-              <p className={`text-[#3C8FE5] font-bold ml-1`}>Daftar</p>
+              <a href="/register" className={`text-[#3C8FE5] font-bold ml-1`}>Daftar</a>
             </div>
           </div>
         </div>

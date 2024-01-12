@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { dm, inter, jakarta } from "../_utils/fonts";
 import InputForm from "../_components/input-form";
 import Button from "../_atoms/button";
@@ -11,16 +11,23 @@ import HospitalInfo from "./_components/hospital-info";
 import HospitalResponsibility from "./_components/hospital-responsibility";
 import Success from "./_components/success";
 
-const StepButton = () => {
+const StepButton = ({
+  onPrevious,
+  onNext,
+}: {
+  onPrevious: any;
+  onNext: any;
+}) => {
   return (
     <div className="inline-flex space-x-4">
-      <Button stroke title="Sebelumnya" />
-      <Button title="Selanjutnya" />
+      <Button onClick={onPrevious} stroke title="Sebelumnya" />
+      <Button onClick={onNext} title="Selanjutnya" />
     </div>
   );
 };
 
 export default function Register() {
+  const [step, setStep] = useState(0);
   return (
     <>
       <main className="m-auto justify-center items-center py-10 flex flex-1 flex-col mx-4">
@@ -43,11 +50,14 @@ export default function Register() {
             </p>
           </div>
           {/* Progres barnya belom */}
-          {/* <HospitalAccount /> */}
-          {/* <HospitalInfo /> */}
-          <HospitalResponsibility />
+          {step == 0 && <HospitalAccount />}
+          {step == 1 && <HospitalInfo />}
+          {step == 2 && <HospitalResponsibility />}
           <div className="flex flex-col justify-center">
-            <StepButton />
+            <StepButton
+              onPrevious={() => setStep(step - 1)}
+              onNext={() => setStep(step + 1)}
+            />
             <div className="inline-flex justify-center items-center mt-4">
               <p className={`${dm.className} font-normal text-[#64748B]`}>
                 Sudah punya akun?
