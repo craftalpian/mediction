@@ -62,7 +62,7 @@ export default function Register() {
               <p className={`${dm.className} font-normal text-[#64748B]`}>
                 Sudah punya akun?
               </p>
-              <p className={`text-[#3C8FE5] font-bold ml-1`}>Masuk</p>
+              <a href="/login" className={`text-[#3C8FE5] font-bold ml-1`}>Masuk</a>
             </div>
           </div>
         </div>

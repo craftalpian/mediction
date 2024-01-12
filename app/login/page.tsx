@@ -1,16 +1,24 @@
+"use client";
+
 import React from "react";
 import { dm, inter } from "../_utils/fonts";
 import InputForm from "../_components/input-form";
 import Button from "../_atoms/button";
 import MedictionLogo from "../../public/Mediction.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const { push } = useRouter();
   return (
     <main className="m-auto justify-center items-center py-10 flex flex-1 flex-col mx-4">
       <div className="space-y-[40px]">
         <div>
-          <Image src={MedictionLogo} alt="Logo Mediction" className="mb-8 mx-auto" />
+          <Image
+            src={MedictionLogo}
+            alt="Logo Mediction"
+            className="mb-8 mx-auto"
+          />
           <h1
             className={`text-[#090914] ${dm.className} font-bold text-center text-2xl`}
           >
@@ -54,12 +62,14 @@ export default function Login() {
             </p>
           </div>
           <div className="flex flex-col justify-center">
-            <Button title="Masuk" />
+            <Button title="Masuk" onClick={() => push("/dashboard-home")} />
             <div className="inline-flex justify-center items-center mt-4">
               <p className={`${dm.className} font-normal text-[#64748B]`}>
                 Belum punya akun?
               </p>
-              <a href="/register" className={`text-[#3C8FE5] font-bold ml-1`}>Daftar</a>
+              <a href="/register" className={`text-[#3C8FE5] font-bold ml-1`}>
+                Daftar
+              </a>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import MedictionLogo from "../../public/Mediction.png";
 import Image from "next/image";
@@ -9,18 +11,22 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { AiFillMedicineBox } from "react-icons/ai";
 import { HiDotsVertical } from "react-icons/hi";
 import { WiMoonWaningCrescent2 } from "react-icons/wi";
+import { usePathname } from "next/navigation";
 
 const Menu = ({
   active = false,
   icon,
   title,
+  target,
 }: {
   active?: boolean;
   icon: any;
   title: string;
+  target: string;
 }) => {
   return (
-    <button
+    <a
+      href={target}
       className={clsx(
         `inline-flex items-center space-x-4 text-xl pl-[24px] w-full py-4`,
         {
@@ -38,7 +44,7 @@ const Menu = ({
       >
         {title}
       </h2>
-    </button>
+    </a>
   );
 };
 
@@ -47,6 +53,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const path = usePathname();
+
   return (
     <div className="flex flex-row flex-1 bg-slate-50 relative">
       <div className="pt-[32px] bg-white max-w-[224px] flex flex-col justify-between sticky left-0 h-screen">
@@ -57,10 +65,20 @@ export default function RootLayout({
             className="pl-[24px] pr-[46px] w-[194px]"
           />
           <div className="my-[32px] border-b" />
-          <Menu active icon={<BiSolidCategoryAlt />} title="K" />
-          <Menu icon={<HiUsers />} title="Pasien" />
-          <Menu icon={<AiFillMedicineBox />} title="Dokter" />
-          <Menu icon={<FaCloudUploadAlt />} title="Rujukan" />
+          <Menu
+            active={path === "/dashboard-home"}
+            icon={<BiSolidCategoryAlt />}
+            title="Dashboard"
+            target="/dashboard-home"
+          />
+          <Menu
+            active={path === "/dashboard-patient"}
+            icon={<HiUsers />}
+            title="Pasien"
+            target="/dashboard-patient"
+          />
+          <Menu icon={<AiFillMedicineBox />} title="Dokter" target="#" />
+          <Menu icon={<FaCloudUploadAlt />} title="Rujukan" target="#" />
         </div>
         <div className="m-6 relative bg-gradient-to-br from-blue-500 to-sky-900 rounded-3xl flex-col justify-start items-center inline-flex">
           <button className="text-white absolute right-[12px] top-[12px]">
@@ -85,7 +103,6 @@ export default function RootLayout({
           </p>
         </div>
       </div>
-      {/* <div className="flex flex-1">{children}</div> */}
       {children}
     </div>
   );
