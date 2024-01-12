@@ -6,15 +6,15 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 export default function ListPatient() {
   return (
     <div className="overflow-x-auto">
-      <table className="table border border-gray-300 table-auto">
+      <table className="table table-auto">
         <thead
-          className={`bg-[#EBF0F4] py-4 leading-snug text-neutral-950 text-sm font-bold ${dm.className}`}
+          className={`bg-[#E6F7FD] border-0 py-4 leading-snug text-neutral-950 text-sm font-bold ${dm.className}`}
         >
-          <tr>
+          <tr className="border-b-[#D8DCDF]">
             <th></th>
-            <th>ID Pasien</th>
+            <th className="w-8">ID Pasien</th>
             <th>Jenis Kelamin</th>
-            <th>Tanggal Lahir</th>
+            <th className="max-w-10">Tanggal Lahir</th>
             <th>Nomor Telepon</th>
             <th>Alamat</th>
             <th>Fasilitas Kesehatan</th>
@@ -23,7 +23,7 @@ export default function ListPatient() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr className="border-b-[#D8DCDF]">
             <th className="inline-flex">
               <h1
                 className={`text-slate-900 text-sm font-bold ${dm.className} leading-snug`}
@@ -31,7 +31,7 @@ export default function ListPatient() {
                 Nadia Omara
               </h1>
             </th>
-            <td>
+            <td className="w-8">
               <a
                 href="#"
                 className={`text-sky-900 text-sm font-medium ${dm.className} leading-snug`}
@@ -50,7 +50,9 @@ export default function ListPatient() {
             </td>
             <td>
               <div className="inline-flex space-x-3 text-[#A9B4CD] text-base items-center">
+                <h1 className="text-lg">
                 <MdCalendarMonth />
+                </h1>
                 <p
                   className={`text-slate-900 text-sm font-normal ${dm.className} leading-snug`}
                 >

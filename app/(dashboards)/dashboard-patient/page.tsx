@@ -8,7 +8,7 @@ import AddNewPatient from "./_components/add-new-patient";
 import ListPatient from "./_components/list-patient";
 import EmptyPatient from "./_components/empty-patient";
 
-export default function Login() {
+export default function DashboardPatient() {
   return (
     <>
       <main className="flex flex-1 flex-col p-8 bg-slate-50">
