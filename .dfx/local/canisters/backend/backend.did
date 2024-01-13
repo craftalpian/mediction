@@ -1,0 +1,84 @@
+type PatientPayload = 
+ record {
+   address: text;
+   birthdate: text;
+   bloodType: text;
+   fullname: text;
+   gender: PatientGender;
+   idNumber: nat;
+   insurance: bool;
+   password: text;
+   phoneNumber: text;
+   representativeAddress: text;
+   representativeName: text;
+   representativePhoneNumber: text;
+   representativeStatus: text;
+ };
+type PatientId = nat;
+type PatientGender = 
+ variant {
+   Female;
+   Male;
+ };
+type Patient = 
+ record {
+   address: text;
+   birthdate: text;
+   bloodType: text;
+   createdAt: int;
+   fullname: text;
+   gender: PatientGender;
+   id: nat;
+   idNumber: nat;
+   insurance: bool;
+   owner: principal;
+   password: text;
+   phoneNumber: text;
+   representativeAddress: text;
+   representativeName: text;
+   representativePhoneNumber: text;
+   representativeStatus: text;
+   updatedAt: int;
+ };
+type HospitalPayload = 
+ record {
+   address: text;
+   category: HospitalCategory;
+   email: text;
+   name: text;
+   password: text;
+   personInCharge: text;
+   personInChargePhone: text;
+   personInPosition: text;
+   phone: text;
+ };
+type HospitalId = nat;
+type HospitalCategory = 
+ variant {
+   Private;
+   Public;
+ };
+type Hospital = 
+ record {
+   address: text;
+   category: HospitalCategory;
+   createdAt: int;
+   email: text;
+   id: nat;
+   name: text;
+   owner: principal;
+   password: text;
+   personInCharge: text;
+   personInChargePhone: text;
+   personInPosition: text;
+   phone: text;
+   updatedAt: int;
+ };
+service : {
+  createHospital: (HospitalId, HospitalPayload) -> (HospitalId);
+  createHospitalPatient: (HospitalId, PatientId) -> (vec PatientId);
+  createPatient: (PatientId, PatientPayload) -> (PatientId);
+  getHospital: (HospitalId) -> (opt Hospital);
+  getHospitalPatient: (HospitalId) -> (vec PatientId);
+  getPatient: (PatientId) -> (opt Patient);
+}
