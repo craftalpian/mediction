@@ -3,6 +3,8 @@ import React from "react";
 import { MdCalendarMonth } from "react-icons/md";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Avatar from "react-avatar";
+import { FaCheckCircle } from "react-icons/fa";
+import { BiDetail } from "react-icons/bi";
 
 export default function ListReference({
   onClickAccept,
@@ -69,16 +71,17 @@ export default function ListReference({
               <div className="inline-flex gap-x-4">
                 <button
                   onClick={onClickDetail}
-                  className="p-3.5 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex"
+                  className="p-3.5 rounded-lg justify-center items-center gap-1 inline-flex border border-sky-800"
                 >
-                  <div className="py-0.5 justify-center items-center flex">
-                    <HiOutlineDotsVertical />
+                  <div className="py-0.5 justify-center items-center text-white flex">
+                    <BiDetail />
                   </div>
                 </button>
                 <button
-                  className="p-3 bg-sky-900 rounded-lg justify-center items-center gap-2 inline-flex"
+                  className="p-3 bg-sky-900 text-white rounded-lg justify-center items-center gap-2 inline-flex"
                   onClick={onClickAccept}
                 >
+                  <FaCheckCircle />
                   <p
                     className={`text-white text-xs font-bold ${dm.className} leading-tight`}
                   >
