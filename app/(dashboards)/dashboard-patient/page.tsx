@@ -36,7 +36,7 @@ export default function DashboardPatient() {
             </h1>
           </button>
         </div>
-        <div className="mt-[20px] bg-white flex flex-1 w-full flex-col">
+        <div className="mt-[20px] bg-white flex flex-1 w-full flex-col px-8 pt-6">
           {true ? (
             <ListPatient onClick={() => push("/dashboard-patient/patient")} />
           ) : (
