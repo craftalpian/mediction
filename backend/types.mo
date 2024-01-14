@@ -1,6 +1,8 @@
 import Trie "mo:base/Trie";
 import HashMap "mo:base/HashMap";
 import Buffer "mo:base/Buffer";
+import Text "mo:base/Text";
+import Nat "mo:base/Nat";
 
 module {
       /**
@@ -48,10 +50,6 @@ module {
     // createdAt: Int;
     // updatedAt: Int;
   };
-
-  /**
-   * Application State
-   */
 
 //   private stable var hospitals : Trie.Trie<HospitalId, Hospital> = Trie.empty();
 
@@ -114,4 +112,136 @@ module {
         hospitalId : Nat;
         patientId : Nat;
     };
+
+    public type DoctorId = Nat;
+
+    public type DoctorSpecialist = {
+        #Kardiolog;
+        #Neurolog;
+        #Onkolog;
+        #Dermatolog;
+        #Ortopedi;
+    };
+
+    public type DoctorSector = {
+        #Umum;
+        #Anak;
+        #Gigi;
+        #Bedah;
+        #Psikiatri;
+    };
+
+    public type Doctor = {
+    id : Nat;
+    owner: Principal;
+    fullname : Text;
+    numberSIP : Text;
+    email : Text;
+    phone : Text;
+    sector: DoctorSector;
+    specialist: DoctorSpecialist;
+    createdAt: Int;
+    updatedAt: Int;
+  };
+
+  public type DoctorPayload = {
+    // id : Nat32;
+    // owner: Principal;
+    fullname : Text;
+    numberSIP : Text;
+    email : Text;
+    phone : Text;
+    sector: DoctorSector;
+    specialist: DoctorSpecialist;
+    // createdAt: Int;
+    // updatedAt: Int;
+  };
+
+  public type DoctorHasPatientId = Nat;
+
+  public type DoctorHasPatient = {
+      doctorId : DoctorId;
+      patientId : PatientId;
+  };
+
+  public type DrinkRules = {
+    #SebelumMakan;
+    #SesudahMakan;
+    #SebelumTidur;
+  };
+
+  public type HistoryAction = {
+    #Operasi;
+    #CheckUp;
+    #Terapi;
+  };
+
+  public type Dosage = {
+    #One;
+    #Two;
+    #Three;
+    #Four;
+    #Five;
+  };
+
+  public type DrinkPeriod = {
+    #SetiapHari;
+    #DuaHariSekali;
+    #TigaHariSekali;
+    #HariPilihan: Text;
+    #Lainnya: Text;
+  };
+  public type DrinkDuration = {
+    #SatuHari;
+    #TigaHari;
+    #SatuMinggu;
+    #DuaMinggu;
+    #SatuBulan;
+    #Lainnya: Text;
+  };
+
+  public type HistoryId = Nat;
+
+  public type Medicine = {
+    name: Text;
+    dosage: Dosage;
+    drinkPeriod: DrinkPeriod;
+    drinkRules: DrinkRules;
+    drinkStart: Text;
+    drinkDuration: DrinkDuration;
+  };
+
+  public type History = {
+    id : HistoryId;
+    owner: Principal;
+    doctorId : DoctorId;
+    patientId : PatientId;
+    symptoms: Text;
+    tension: Text;
+    weight: Nat;
+    diagnoses: Text;
+    description: Text;
+    action: HistoryAction;
+    followUp: Text;
+    medicines: [Medicine];
+    createdAt: Int;
+    updatedAt: Int;
+  };
+
+  public type HistoryPayload = {
+    // id : HistoryId;
+    // owner: Principal;
+    doctorId : DoctorId;
+    // patientId : PatientId;
+    symptoms: Text;
+    tension: Text;
+    weight: Nat;
+    diagnoses: Text;
+    description: Text;
+    action: HistoryAction;
+    followUp: Text;
+    medicines: [Medicine];
+    // createdAt: Int;
+    // updatedAt: Int;
+  };
 }

@@ -6,14 +6,6 @@
         "declarations": {
           "node_compatibility": true
         }
-      },
-      "frontend": {
-        "dependencies": ["backend"],
-        "frontend": {
-          "entrypoint": "out/index.html"
-        },
-        "source": ["out"],
-        "type": "assets"
       }
     },
     "dfx": "0.15.2",

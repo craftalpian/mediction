@@ -29,10 +29,20 @@ actor Mediction {
    type HospitalHasPatientId = Types.HospitalHasPatientId;
    type HospitalHasPatient = Types.HospitalHasPatient;
 
+   type DoctorId = Types.DoctorId;
+   type DoctorPayload = Types.DoctorPayload;
+   type Doctor = Types.Doctor;
+
+   type DoctorHasPatientId = Types.DoctorHasPatientId;
+   type DoctorHasPatient = Types.DoctorHasPatient;
+
+   type HistoryId = Types.HistoryId;
+   type HistoryPayload = Types.HistoryPayload;
+   type History = Types.History;
    
    var db: Database.Repository = Database.Repository();
 
-   public shared(msg) func createHospital(hospitalId: HospitalId, hospitalPayload: HospitalPayload): async HospitalId {
+   public shared(msg) func createHospital(hospitalId: HospitalId, hospitalPayload: HospitalPayload): async Hospital {
         let hospital: Hospital = {
             id = hospitalId;
             owner = msg.caller;
@@ -55,7 +65,7 @@ actor Mediction {
         db.getHospital(hospitalId);
     };
 
-    public shared(msg) func createPatient(patientId: PatientId, patientPayload: PatientPayload): async PatientId {
+    public shared(msg) func createPatient(patientId: PatientId, patientPayload: PatientPayload): async Patient {
     let patient: Patient = {
         id = patientId;
         owner = msg.caller;
@@ -83,20 +93,127 @@ actor Mediction {
     };
 
     public func createHospitalPatient(hospitalId: HospitalId, patientId: PatientId): async [PatientId] {
-    let patient: ?Patient = await getPatient(patientId);
-    let arr: [PatientId] = await getHospitalPatient(hospitalId);
-    let exist = Array.find<PatientId>(arr, func (x) { x == patientId });
+        let patient: ?Patient = await getPatient(patientId);
+        let arr: [Patient] = await getHospitalPatient(hospitalId);
+        let exist = Array.find<Patient>(arr, func (x) { x.id == patientId });
+        let arrId: [PatientId] = Array.map<Patient,PatientId>(arr, func (x) { x.id });
 
         switch (patient, exist) {
             case (null, _) { return []; }; // Patient does not exist
             case (_, null) { db.createHospitalHasPatient(hospitalId, patientId); }; // Patient exists but not in this hospital
             case (_, _) {
-                return arr;
+                return arrId;
             };
         };
     };
 
-    public func getHospitalPatient(hospitalId: HospitalId): async [PatientId] {
-        db.getHospitalHasPatient(hospitalId);
+    public func getHospitalPatient(hospitalId: HospitalId): async [Patient] {
+        let data = db.getHospitalHasPatient(hospitalId);
+        let patients = Buffer.Buffer<Patient>(0);
+        for (patientId in data.vals()) {
+            let patient: ?Patient = await getPatient(patientId);
+            switch(patient) {
+                case(null) {  };
+                case(?patient) { patients.add(patient); };
+            };
+        };
+        return Buffer.toArray(patients);
     };
+
+    public shared(msg) func createDoctor(doctorId: DoctorId, doctorPayload: DoctorPayload): async Doctor {
+    let doctor: Doctor = {
+        id = doctorId;
+        owner = msg.caller;
+        fullname = doctorPayload.fullname;
+        numberSIP = doctorPayload.numberSIP;
+        email = doctorPayload.email;
+        phone = doctorPayload.phone;
+        sector= doctorPayload.sector;
+        specialist= doctorPayload.specialist;
+        createdAt = Time.now();
+        updatedAt = Time.now();
+    };
+        await db.createDoctor(doctorId, doctor);
+    };
+
+    public func getDoctor(doctorId: DoctorId): async ?Doctor {
+        db.getDoctor(doctorId);
+    };
+
+    public func createDoctorPatient(doctorId: DoctorId, patientId: PatientId): async [PatientId] {
+    let patient: ?Patient = await getPatient(patientId);
+    let arr: [Patient] = await getDoctorPatient(doctorId);
+    let exist = Array.find<Patient>(arr, func (x) { x.id == patientId });
+    let arrId: [PatientId] = Array.map<Patient,PatientId>(arr, func (x) { x.id });
+
+        switch (patient, exist) {
+            case (null, _) { return []; }; // Patient does not exist
+            case (_, null) { db.createDoctorHasPatient(doctorId, patientId); }; // Patient exists but not in this doctor
+            case (_, _) {
+                return arrId;
+            };
+        };
+    };
+
+    public func getDoctorPatient(doctorId: DoctorId): async [Patient] {
+        let data = db.getDoctorHasPatient(doctorId);
+        let patients = Buffer.Buffer<Patient>(0);
+        for (patientId in data.vals()) {
+            let patient: ?Patient = await getPatient(patientId);
+            switch(patient) {
+                case(null) {  };
+                case(?patient) { patients.add(patient); };
+            };
+        };
+        return Buffer.toArray(patients);
+    };
+
+    public func removeDoctorPatient(doctorId: DoctorId, patientId: PatientId): async [PatientId] {
+    let arr: [Patient] = await getDoctorPatient(doctorId);
+    let exist = Array.find<Patient>(arr, func (x) { x.id == patientId });
+    let arrId: [PatientId] = Array.map<Patient,PatientId>(arr, func (x) { x.id });
+
+        switch (arr, exist) {
+            case (arr, ?exist) { db.removeDoctorHasPatient(doctorId,patientId); }; // Patient does not exist
+            case (arr, null) { return arrId; }; // Patient exists but not in this doctor
+        };
+    };
+
+    var historyId : HistoryId = 0;
+
+    public shared(msg) func createHistory(patientId: PatientId, historyPayload: HistoryPayload): async [History] {
+        let patient: ?Patient = await getPatient(patientId);
+        let doctor: ?Doctor = await getDoctor(historyPayload.doctorId);
+        switch (patient, doctor) {
+            case (null, _) { return []; }; // Patient does not exist
+            case (_, null) { return []; }; // Patient exists but not in this doctor
+            case (_, _) {
+                historyId := historyId + 1;
+                let history: History = {
+                    id  = historyId;
+                    owner = msg.caller; //should hospital
+                    doctorId  = historyPayload.doctorId;
+                    patientId  = patientId;
+                    symptoms = historyPayload.symptoms;
+                    tension = historyPayload.tension;
+                    weight = historyPayload.weight;
+                    diagnoses = historyPayload.diagnoses;
+                    description = historyPayload.description;
+                    action = historyPayload.action;
+                    followUp = historyPayload.followUp;
+                    medicines = historyPayload.medicines;
+                    createdAt = Time.now();
+                    updatedAt = Time.now();
+                };
+
+                return await db.createHistory(patientId, history);
+            };
+        };
+    };
+
+    public func getHistory(patientId: PatientId): async [History] {
+        db.getHistory(patientId);
+    };
+
+
 };

@@ -20,7 +20,7 @@ const nextConfig = {
     config.plugins.push(EnvPlugin);
     return config;
   },
-  output: "export"
+  // output: "export"
 };
 
 module.exports = nextConfig;

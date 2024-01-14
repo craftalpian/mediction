@@ -14,6 +14,7 @@ type PatientPayload =
    representativePhoneNumber: text;
    representativeStatus: text;
  };
+type PatientId__1 = nat;
 type PatientId = nat;
 type PatientGender = 
  variant {
@@ -39,6 +40,15 @@ type Patient =
    representativePhoneNumber: text;
    representativeStatus: text;
    updatedAt: int;
+ };
+type Medicine = 
+ record {
+   dosage: Dosage;
+   drinkDuration: DrinkDuration;
+   drinkPeriod: DrinkPeriod;
+   drinkRules: DrinkRules;
+   drinkStart: text;
+   name: text;
  };
 type HospitalPayload = 
  record {
@@ -74,11 +84,125 @@ type Hospital =
    phone: text;
    updatedAt: int;
  };
+type HistoryPayload = 
+ record {
+   action: HistoryAction;
+   description: text;
+   diagnoses: text;
+   doctorId: DoctorId__1;
+   followUp: text;
+   medicines: vec Medicine;
+   symptoms: text;
+   tension: text;
+   weight: nat;
+ };
+type HistoryId = nat;
+type HistoryAction = 
+ variant {
+   CheckUp;
+   Operasi;
+   Terapi;
+ };
+type History = 
+ record {
+   action: HistoryAction;
+   createdAt: int;
+   description: text;
+   diagnoses: text;
+   doctorId: DoctorId__1;
+   followUp: text;
+   id: HistoryId;
+   medicines: vec Medicine;
+   owner: principal;
+   patientId: PatientId__1;
+   symptoms: text;
+   tension: text;
+   updatedAt: int;
+   weight: nat;
+ };
+type DrinkRules = 
+ variant {
+   SebelumMakan;
+   SebelumTidur;
+   SesudahMakan;
+ };
+type DrinkPeriod = 
+ variant {
+   DuaHariSekali;
+   HariPilihan: text;
+   Lainnya: text;
+   SetiapHari;
+   TigaHariSekali;
+ };
+type DrinkDuration = 
+ variant {
+   DuaMinggu;
+   Lainnya: text;
+   SatuBulan;
+   SatuHari;
+   SatuMinggu;
+   TigaHari;
+ };
+type Dosage = 
+ variant {
+   Five;
+   Four;
+   One;
+   Three;
+   Two;
+ };
+type DoctorSpecialist = 
+ variant {
+   Dermatolog;
+   Kardiolog;
+   Neurolog;
+   Onkolog;
+   Ortopedi;
+ };
+type DoctorSector = 
+ variant {
+   Anak;
+   Bedah;
+   Gigi;
+   Psikiatri;
+   Umum;
+ };
+type DoctorPayload = 
+ record {
+   email: text;
+   fullname: text;
+   numberSIP: text;
+   phone: text;
+   sector: DoctorSector;
+   specialist: DoctorSpecialist;
+ };
+type DoctorId__1 = nat;
+type DoctorId = nat;
+type Doctor = 
+ record {
+   createdAt: int;
+   email: text;
+   fullname: text;
+   id: nat;
+   numberSIP: text;
+   owner: principal;
+   phone: text;
+   sector: DoctorSector;
+   specialist: DoctorSpecialist;
+   updatedAt: int;
+ };
 service : {
+  createDoctor: (DoctorId, DoctorPayload) -> (DoctorId);
+  createDoctorPatient: (DoctorId, PatientId) -> (vec PatientId);
+  createHistory: (PatientId, HistoryPayload) -> (vec History);
   createHospital: (HospitalId, HospitalPayload) -> (HospitalId);
   createHospitalPatient: (HospitalId, PatientId) -> (vec PatientId);
   createPatient: (PatientId, PatientPayload) -> (PatientId);
+  getDoctor: (DoctorId) -> (opt Doctor);
+  getDoctorPatient: (DoctorId) -> (vec PatientId);
+  getHistory: (PatientId) -> (vec History);
   getHospital: (HospitalId) -> (opt Hospital);
   getHospitalPatient: (HospitalId) -> (vec PatientId);
   getPatient: (PatientId) -> (opt Patient);
+  removeDoctorPatient: (DoctorId, PatientId) -> (vec PatientId);
 }
