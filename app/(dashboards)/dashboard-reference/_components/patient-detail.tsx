@@ -12,8 +12,8 @@ export default function PatientDetail() {
   return (
     <div className="modal-box bg-white px-6 max-w-2xl">
       <div className="flex flex-col justify-center items-center">
-        <div className="w-full justify-between items-center inline-flex pt-10 border-b border-b-slate-200 pb-[26px]">
-          <div className="space-x-[18px] inline-flex items-center pl-10">
+        <div className="w-full justify-between items-center inline-flex pt-0 border-b border-b-slate-200 pb-[26px]">
+          <div className="space-x-[18px] inline-flex items-center">
             <Image src={DetailModal} alt="" />
             <p>
               <span
@@ -31,7 +31,7 @@ export default function PatientDetail() {
             </form>
           </div>
         </div>
-        <div className="w-full px-10 mt-10">
+        <div className="w-full mt-10">
           <div className="collapse bg-sky-700 bg-opacity-95">
             <input type="checkbox" />
             <div className="collapse-title">
@@ -169,7 +169,7 @@ export default function PatientDetail() {
             </div>
           </div>
         </div>
-        <div className="bg-white flex flex-col flex-1 rounded-2xl px-10 py-7">
+        <div className="bg-white flex flex-col flex-1 rounded-2xl py-7">
           <div className="inline-flex justify-between w-full">
             <h1
               className={`text-slate-900 text-lg font-bold ${jakarta.className} leading-loose`}
