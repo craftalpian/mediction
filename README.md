@@ -28,4 +28,30 @@ And then deploy the canister:
 dfx deploy
 ```
 ## Structures
+```bash
+├── app                     // frontend directory
+├── backend                 // backend directory
+│   ├── database.mo
+│   ├── main.mo
+│   └── types.mo
+├── dfx.json                // settings for dfx deployment
+├── dfx.webpack.config.js
+├── next.config.js          // settings for next js
+├── next-env.d.ts
+├── node_modules
+├── out                     // contain static file deploy to canister
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── public                  // contain assets
+├── README.md
+├── tailwind.config.ts
+└── tsconfig.json
+
+```
+
 ## Features
+
+### Hospital
+### Doctor
+### Patient
