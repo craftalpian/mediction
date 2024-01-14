@@ -78,7 +78,12 @@ export default function RootLayout({
             target="/dashboard-patient"
           />
           <Menu icon={<AiFillMedicineBox />} title="Dokter" target="#" />
-          <Menu icon={<FaCloudUploadAlt />} title="Rujukan" target="#" />
+          <Menu
+            active={path.includes("/dashboard-reference")}
+            icon={<FaCloudUploadAlt />}
+            title="Rujukan"
+            target="/dashboard-reference"
+          />
         </div>
         <div className="m-6 relative bg-gradient-to-br from-blue-500 to-sky-900 rounded-3xl flex-col justify-start items-center inline-flex">
           <button className="text-white absolute right-[12px] top-[12px]">
