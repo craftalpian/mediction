@@ -85,7 +85,15 @@ export default function DashboardReference() {
             />
           </div>
           {menu === 0 ? (
-            <ListReference onClick={() => push("/dashboard-patient/patient")} />
+            <ListReference
+              onClickAccept={() => {
+                if (document) {
+                  (
+                    document.getElementById("my_modal_accept_patient") as any
+                  ).showModal();
+                }
+              }}
+            />
           ) : (
             <ListReferenceSent
               onClick={() => push("/dashboard-patient/patient")}
@@ -93,7 +101,7 @@ export default function DashboardReference() {
           )}
         </div>
       </main>
-      <dialog id="my_modal_add_new_patient" className="modal">
+      <dialog id="my_modal_accept_patient" className="modal">
         <AddNewPatient />
         <form method="dialog" className="modal-backdrop">
           <button>close</button>

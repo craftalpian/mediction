@@ -4,7 +4,7 @@ import { MdCalendarMonth } from "react-icons/md";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Avatar from "react-avatar";
 
-export default function ListReference({ onClick }: { onClick?: () => void }) {
+export default function ListReference({ onClickAccept }: { onClickAccept?: () => void }) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-auto">
@@ -68,12 +68,12 @@ export default function ListReference({ onClick }: { onClick?: () => void }) {
                 </button>
                 <button
                   className="p-3 bg-sky-900 rounded-lg justify-center items-center gap-2 inline-flex"
-                  onClick={onClick}
+                  onClick={onClickAccept}
                 >
                   <p
                     className={`text-white text-xs font-bold ${dm.className} leading-tight`}
                   >
-                    Lihat Detail
+                    Terima
                   </p>
                 </button>
               </div>
