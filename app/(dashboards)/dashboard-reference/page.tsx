@@ -12,6 +12,7 @@ import { FaPaperPlane } from "react-icons/fa";
 import ListReference from "./_components/list-reference";
 import clsx from "clsx";
 import ListReferenceSent from "./_components/list-reference-sent";
+import PatientDetail from "./_components/patient-detail";
 
 const Menu = ({
   title,
@@ -93,6 +94,13 @@ export default function DashboardReference() {
                   ).showModal();
                 }
               }}
+              onClickDetail={() => {
+                if (document) {
+                  (
+                    document.getElementById("my_modal_patient_detail") as any
+                  ).showModal();
+                }
+              }}
             />
           ) : (
             <ListReferenceSent
@@ -103,6 +111,12 @@ export default function DashboardReference() {
       </main>
       <dialog id="my_modal_accept_patient" className="modal">
         <AddNewPatient />
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+      <dialog id="my_modal_patient_detail" className="modal">
+        <PatientDetail />
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
         </form>

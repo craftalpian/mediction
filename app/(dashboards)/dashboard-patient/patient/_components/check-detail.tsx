@@ -1,9 +1,6 @@
-import Button from "@/app/_atoms/button";
-import InputForm from "@/app/_components/input-form";
-import { dm, inter, jakarta } from "@/app/_utils/fonts";
+import { dm, jakarta } from "@/app/_utils/fonts";
 import React from "react";
 import { IoMdClose } from "react-icons/io";
-import AddPatient from "../../../../../public/add-patient.svg";
 import DetailModal from "../../../../../public/medical-file.svg";
 import Image from "next/image";
 

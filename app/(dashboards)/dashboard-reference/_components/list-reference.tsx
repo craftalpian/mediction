@@ -4,7 +4,13 @@ import { MdCalendarMonth } from "react-icons/md";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Avatar from "react-avatar";
 
-export default function ListReference({ onClickAccept }: { onClickAccept?: () => void }) {
+export default function ListReference({
+  onClickAccept,
+  onClickDetail,
+}: {
+  onClickAccept?: () => void;
+  onClickDetail?: () => void;
+}) {
   return (
     <div className="overflow-x-auto">
       <table className="table table-auto">
@@ -61,7 +67,10 @@ export default function ListReference({ onClickAccept }: { onClickAccept?: () =>
             </td>
             <td>
               <div className="inline-flex gap-x-4">
-                <button className="p-3.5 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex">
+                <button
+                  onClick={onClickDetail}
+                  className="p-3.5 rounded-lg border border-sky-800 justify-center items-center gap-1 inline-flex"
+                >
                   <div className="py-0.5 justify-center items-center flex">
                     <HiOutlineDotsVertical />
                   </div>
